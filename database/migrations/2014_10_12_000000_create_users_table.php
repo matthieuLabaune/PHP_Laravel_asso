@@ -16,12 +16,12 @@ class CreateUsersTable extends Migration
         Schema::create('users', function (Blueprint $table) {
             $table->id();
             $table->string('name')->nullable();
-            $table->string('first-name')->nullable();
+            $table->string('first_name')->nullable();
             $table->string('gender')->nullable();
             $table->date('birthdate')->nullable();
             $table->string('phone')->nullable();
             $table->string('city')->nullable();
-            $table->integer('zip_code')->nullable();
+            $table->string('zip_code')->nullable();
             $table->string('address_1')->nullable();
             $table->string('address_2')->nullable();
             $table->string('is_admin');
