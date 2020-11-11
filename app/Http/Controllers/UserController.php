@@ -14,6 +14,7 @@ class UserController extends Controller
     {
         $users = User::all();
         return view('index', compact('users'));
+        //['users' => $users]
     }
 
     /**
@@ -38,14 +39,13 @@ class UserController extends Controller
     }
 
     /**
-     * Display the specified resource.
-     *
-     * @param int $id
-     * @return \Illuminate\Http\Response
+     * @param User $user
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
     public function show($id)
     {
-        //
+        $user = User::find($id);
+        return view('users.show', ['user' => $user]);
     }
 
     /**
