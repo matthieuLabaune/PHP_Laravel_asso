@@ -24,10 +24,10 @@ class CreateUsersTable extends Migration
             $table->string('zip_code')->nullable();
             $table->string('address_1')->nullable();
             $table->string('address_2')->nullable();
-            $table->string('is_admin');
-            $table->string('email')->unique();
+            $table->string('role')->nullable();
+            $table->string('email')->unique()->nullable();
             $table->timestamp('email_verified_at')->nullable();
-            $table->string('password');
+            $table->string('password')->default('password');
             $table->rememberToken();
             $table->timestamps();
         });

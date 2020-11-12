@@ -18,10 +18,12 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::resource('users', UserController::class);
-/*Route::get('/users', [UserController::class, 'index'])->name('users.index');
-Route::get('/users/{id}/show', [UserController::class, 'show'])->name('users.show');
-Route::get('/users/{id}/edit', [UserController::class, 'edit'])->name('users.edit');
-Route::put('/user/{id}/update', [UserController::class, 'update'])->name('users.update');*/
+/*Route::resource('users', UserController::class);*/
 
-
+Route::get('/users', [UserController::class, 'index'])->name('users.index');
+Route::get('/users/show/{id}/', [UserController::class, 'show'])->name('users.show');
+Route::get('/users/edit/{id}/', [UserController::class, 'edit'])->name('users.edit');
+Route::put('/users/update/{id}/', [UserController::class, 'update'])->name('users.update');
+Route::get('/users/create', [UserController::class, 'create'])->name('users.create');
+Route::post('/users/store', [UserController::class, 'store'])->name('users.store');
+Route::delete('/users/destroy/{id}', [UserController::class, 'destroy'])->name('users.destroy');
