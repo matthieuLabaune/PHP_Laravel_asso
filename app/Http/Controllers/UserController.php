@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\UpdateUser;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -13,8 +14,8 @@ class UserController extends Controller
     public function index()
     {
         $users = User::all();
-        return view('index', compact('users'));
-        //['users' => $users]
+        return view('index', ['users' => $users]);
+        //
     }
 
     /**
@@ -49,26 +50,27 @@ class UserController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
-     *
-     * @param int $id
-     * @return \Illuminate\Http\Response
+     * @param $id
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
     public function edit($id)
     {
-        //
+        $user = User::find($id);
+        return view('users.edit', ['user' => $user]);
     }
 
     /**
-     * Update the specified resource in storage.
-     *
-     * @param \Illuminate\Http\Request $request
-     * @param int $id
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     * @param User $user
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
-    public function update(Request $request, $id)
+    public function update(UpdateUser $request, User $user)
     {
-        //
+        $user->update($request->all());
+        $user->save();
+        /*  User::where('id',$user->id)->update($request->all());*/
+
+        return view('users.show', ['user' => $user]);
     }
 
     /**

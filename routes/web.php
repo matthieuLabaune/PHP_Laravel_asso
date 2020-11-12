@@ -18,7 +18,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-/*Route::resource('users', UserController::class);*/
-Route::get('/users', [UserController::class, 'index'])->name('users.index');
-Route::get('/users/{id}', [UserController::class, 'show'])->name('users.show');
+Route::resource('users', UserController::class);
+/*Route::get('/users', [UserController::class, 'index'])->name('users.index');
+Route::get('/users/{id}/show', [UserController::class, 'show'])->name('users.show');
+Route::get('/users/{id}/edit', [UserController::class, 'edit'])->name('users.edit');
+Route::put('/user/{id}/update', [UserController::class, 'update'])->name('users.update');*/
+
 
