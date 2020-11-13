@@ -27,3 +27,8 @@ Route::put('/users/update/{id}/', [UserController::class, 'update'])->name('user
 Route::get('/users/create', [UserController::class, 'create'])->name('users.create');
 Route::post('/users/store', [UserController::class, 'store'])->name('users.store');
 Route::delete('/users/destroy/{id}', [UserController::class, 'destroy'])->name('users.destroy');
+
+
+Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
+    return view('dashboard');
+})->name('dashboard');
