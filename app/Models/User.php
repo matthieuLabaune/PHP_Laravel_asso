@@ -51,11 +51,23 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    /**
+     * Accessor pour changer le format de la date dans les views
+     *
+     * @param $value
+     * @return string
+     */
     public function getBirthDateAttribute($value)
     {
         return Carbon::parse($value)->format('m/d/Y');
     }
 
+    /**
+     *
+     * Mutator pour changer le format de retour dans la BDD (MYSQL format Y-M-D)
+     *
+     * @param $value
+     */
     public function setBirthDateAttribute($value)
     {
         $this->attributes['birthdate'] = Carbon::createFromFormat('d/m/Y', $value)->format('Y-m-d');
