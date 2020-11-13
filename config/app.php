@@ -39,7 +39,7 @@ return [
     |
     */
 
-    'debug' => (bool) env('APP_DEBUG', false),
+    'debug' => (bool)env('APP_DEBUG', false),
 
     /*
     |--------------------------------------------------------------------------
@@ -80,7 +80,7 @@ return [
     |
     */
 
-    'locale' => 'en',
+    'locale' => 'fr',
 
     /*
     |--------------------------------------------------------------------------
@@ -106,7 +106,7 @@ return [
     |
     */
 
-    'faker_locale' => 'en_US',
+    'faker_locale' => 'fr_FR',
 
     /*
     |--------------------------------------------------------------------------
@@ -124,15 +124,26 @@ return [
     'cipher' => 'AES-256-CBC',
 
     /*
-    |--------------------------------------------------------------------------
-    | Autoloaded Service Providers
-    |--------------------------------------------------------------------------
-    |
-    | The service providers listed here will be automatically loaded on the
-    | request to your application. Feel free to add your own services to
-    | this array to grant expanded functionality to your applications.
-    |
+       |--------------------------------------------------------------------------
+       | Date Format PERSONNALISATION
+       |--------------------------------------------------------------------------
+       |
     */
+
+    /*   'date_format' => 'm/d/Y',
+       'date_format_javascript' => 'MM/DD/YYYY',
+
+   */
+       /*
+       |--------------------------------------------------------------------------
+       | Autoloaded Service Providers
+       |--------------------------------------------------------------------------
+       |
+       | The service providers listed here will be automatically loaded on the
+       | request to your application. Feel free to add your own services to
+       | this array to grant expanded functionality to your applications.
+       |
+       */
 
     'providers' => [
 

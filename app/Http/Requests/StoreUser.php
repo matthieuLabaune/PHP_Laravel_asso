@@ -24,17 +24,38 @@ class StoreUser extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required|max:255',
-            'first_name' => 'required|max:255',
-            'birthdate' => 'required|max:255',
-            'email' => 'required|max:255',
-            'phone' => 'required|max:20',
-            'city' => 'required|max:100',
-            'zip_code' => 'required|max:25',
-            'address_1' => 'required|max:80',
-            'address_2' => 'required|max:80',
+            'first_name' => 'required|string|max:255',
+            'name' => 'required|string|max:255',
+            'birthdate' => 'required|date|max:255',
+            'email' => 'required|email|max:255',
+            'phone' => 'required|max:255',
+            'city' => 'required|string|max:255',
+            'zip_code' => 'required|numeric|max:99999',
+            'address_1' => 'required|string|max:255',
+            'address_2' => 'nullable|string|max:255',
             'role' => 'required',
             'gender' => 'required'
         ];
     }
+
+    /**
+     * Get the error messages for the defined validation rules.
+     *
+     * @return array
+     */
+   /* public function messages()
+    {
+        return [
+            'first_name.required' => 'Un prénom est obligatoire',
+            'name.required' => 'Un nom est obligatoire',
+            'birthdate.required' => 'Une date de naissance est obligatoire',
+            'email.required' => 'Une adresse email est obligatoire',
+            'phone.required' => 'Un numéro de téléphone est obligatoire',
+            'city.required' => 'Une ville est obligatoire',
+            'zip_code.required' => 'Un code postal est obligatoire',
+            'address_1.required' => 'Une adresse est obligatoire',
+            'role.required' => 'Un rôle est obligatoire',
+            'gender.required' => 'Une identité est obligatoire',
+        ];
+    }*/
 }

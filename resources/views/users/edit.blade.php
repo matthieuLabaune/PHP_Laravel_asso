@@ -35,31 +35,71 @@
                 @csrf
                 @method('PUT')
                 <div class="row">
-
                     {{-- CIVILITÉ --}}
+                    <div class="form-group has-feedback col-md-6 mb-3 ">
+                        <label>Rôle</label>
+                        <div>
+                            @if($user->role == 1)
+                                <input type="radio" id="membre" name="role" value="0">
+                                <label for="membre">Membre</label><br>
+                                <input type="radio" id="1" name="role" value="1" checked="checked">
+                                <label for="admin">Admin</label><br>
+                            @else
+                                <input type="radio" id="membre" name="role" value="0" checked="checked">
+                                <label for="membre">Membre</label><br>
+                                <input type="radio" id="1" name="role" value="1">
+                                <label for="admin">Admin</label><br>
+                            @endif
+                        </div>
+                    </div>
+                    <div class="form-group has-feedback col-md-6 mb-3">
+                        <label>Civilité</label>
+                        <div>
+                            @if($user->gender == 'male')
+                                <input type="radio" id="male" name="gender" value="male" checked="checked">
+                                <label for="male">Monsieur</label><br>
+                                <input type="radio" id="female" name="gender" value="female">
+                                <label for="female">Madame</label><br>
+                            @else
+                                <input type="radio" id="male" name="gender" value="male">
+                                <label for="male">Monsieur</label><br>
+                                <input type="radio" id="female" name="gender" value="female" checked="checked">
+                                <label for="female">Madame</label><br>
+                            @endif
+                        </div>
+                    </div>
                     <div class="form-group col-md-6 mb-3">
                         <label for="first_name">Prénom</label>
                         <input type="text"
-                               class="form-control"
+                               class="form-control @error('first_name') is-invalid @enderror"
                                id="first_name"
                                name="first_name"
                                value="{{$user->first_name}}">
+                        @error('first_name')
+                        <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
                     </div>
                     <div class="form-group col-md-6 mb-3">
                         <label for="name">Nom</label>
                         <input type="text"
-                               class="form-control"
+                               class="form-control @error('name') is-invalid @enderror"
                                id="name"
                                name="name"
                                value="{{$user->name}}">
+                        @error('name')
+                        <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
                     </div>
                     <div class="form-group col-md-6 mb-3">
                         <label for="birthdate">Date de naissance</label>
                         <input type="text"
-                               class="form-control"
+                               class="form-control @error('birthdate') is-invalid @enderror"
                                id="birthdate"
                                name="birthdate"
                                value="{{$user->birthdate}}">
+                        @error('birthdate')
+                        <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
                     </div>
                 </div>
 
@@ -68,18 +108,24 @@
                     <div class="form-group col-md-6 mb-3">
                         <label for="email">Adresse email</label>
                         <input type="text"
-                               class="form-control"
+                               class="form-control  @error('email') is-invalid @enderror"
                                id="email"
                                name="email"
                                value="{{$user->email}}">
+                        @error('email')
+                        <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
                     </div>
                     <div class="form-group col-md-6 mb-3">
                         <label for="phone">Téléphone</label>
                         <input type="text"
-                               class="form-control"
+                               class="form-control  @error('phone') is-invalid @enderror"
                                id="phone"
                                name="phone"
                                value="{{$user->phone}}">
+                        @error('phone')
+                        <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
                     </div>
                 </div>
 
@@ -87,10 +133,13 @@
                 <div class="form-group mb-3">
                     <label for="address_1">Adresse</label>
                     <input type="text"
-                           class="form-control"
+                           class="form-control  @error('address_1') is-invalid @enderror"
                            id="address_1"
                            name="address_1"
                            value="{{$user->address_1}}">
+                    @error('address_1')
+                    <div class="invalid-feedback">{{ $message }}</div>
+                    @enderror
                 </div>
                 <div class="form-group mb-3">
                     <label for="address_2">Complément d'adresse <span class="text-muted">(Optionnel)</span></label>
@@ -104,18 +153,24 @@
                     <div class="col-md-5 mb-3">
                         <label for="city">Ville</label>
                         <input type="text"
-                               class="form-control"
+                               class="form-control  @error('city') is-invalid @enderror"
                                id="city"
                                name="city"
                                value="{{$user->city}}">
+                        @error('city')
+                        <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
                     </div>
                     <div class="form-group col-md-3 mb-3">
                         <label for="zip_code">Code postal</label>
                         <input type="text"
-                               class="form-control"
+                               class="form-control  @error('zip_code') is-invalid @enderror"
                                id="zip_code"
                                name="zip_code"
                                value="{{$user->zip_code}}">
+                        @error('zip_code')
+                        <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
                     </div>
                 </div>
                 {{-- BOUTON SUBMIT --}}

@@ -37,44 +37,62 @@
                     <div class="form-group has-feedback col-md-6 mb-3">
                         <label>Rôle</label>
                         <div>
-                            <input type="radio" id="membre" name="role" value="0">
+                            <input type="radio" id="membre" name="role" value="0" class="@error('role') is-invalid @enderror">
                             <label for="membre">Membre</label><br>
-                            <input type="radio" id="1" name="role" value="1">
+                            <input type="radio" id="membre" name="role" value="1" class="@error('role') is-invalid @enderror">
                             <label for="admin">Admin</label><br>
+                            @error('role')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
                         </div>
                     </div>
                     <div class="form-group has-feedback col-md-6 mb-3">
                         <label>Civilité</label>
                         <div>
-                            <input type="radio" id="male" name="gender" value="male">
+                            <input type="radio" id="male" name="gender" value="male" class="@error('gender') is-invalid @enderror">
                             <label for="male">Monsieur</label><br>
-                            <input type="radio" id="female" name="gender" value="female">
+                            <input type="radio" id="female" name="gender" value="female" class="@error('gender') is-invalid @enderror">
                             <label for="female">Madame</label><br>
+                            @error('gender')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
                         </div>
                     </div>
                     <div class="col-md-6 mb-3">
                         <label for="first_name">Prénom</label>
                         <input type="text"
-                               class="form-control"
+                               class="form-control @error('first_name') is-invalid @enderror"
                                id="first_name"
                                name="first_name"
-                               placeholder="">
+                               placeholder="Macron"
+                               value="{{ old('first_name') }}">
+                        @error('first_name')
+                        <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
                     </div>
                     <div class="col-md-6 mb-3">
                         <label for="name">Nom</label>
                         <input type="text"
-                               class="form-control"
+                               class="form-control @error('name') is-invalid @enderror"
                                id="name"
                                name="name"
-                               placeholder="">
+                               placeholder="Emmanuel"
+                               value="{{ old('name') }}">
+                        @error('name')
+                        <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
                     </div>
                     <div class="col-md-6 mb-3">
                         <label for="birthdate">Date de naissance</label>
                         <input type="text"
-                               class="form-control"
+                               class="form-control @error('birthdate') is-invalid @enderror"
                                id="birthdate"
                                name="birthdate"
-                               placeholder="">
+                               placeholder="21/12/1977"
+                               value="{{ old('birthdate') }}">
+                        @error('birthdate')
+                        <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
                     </div>
                 </div>
 
@@ -83,17 +101,25 @@
                     <div class="col-md-6 mb-3">
                         <label for="email">Adresse email</label>
                         <input type="text"
-                               class="form-control"
+                               class="form-control @error('email') is-invalid @enderror"
                                id="email"
                                name="email"
-                               placeholder="">
+                               placeholder="manuel42@msn.fr"
+                               value="{{ old('email') }}">
+                        @error('email')
+                        <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
                     </div>
                     <div class="col-md-6 mb-3">
                         <label for="phone">Téléphone</label>
                         <input type="text"
-                               class="form-control"
+                               class="form-control @error('phone') is-invalid @enderror"
                                id="phone" name="phone"
-                               placeholder="">
+                               placeholder="08 15 16 23 42"
+                               value="{{ old('phone') }}">
+                        @error('phone')
+                        <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
                     </div>
                 </div>
 
@@ -101,10 +127,14 @@
                 <div class="mb-3">
                     <label for="address_1">Adresse</label>
                     <input type="text"
-                           class="form-control"
+                           class="form-control @error('address_1') is-invalid @enderror"
                            id="address_1"
                            name="address_1"
-                           placeholder="">
+                           placeholder="55 Rue du Faubourg Saint-Honoré"
+                           value="{{ old('address_1') }}">
+                    @error('address_1')
+                    <div class="invalid-feedback">{{ $message }}</div>
+                    @enderror
                 </div>
                 <div class="mb-3">
                     <label for="address_2">Complément d'adresse <span class="text-muted">(Optionnel)</span></label>
@@ -112,24 +142,33 @@
                            class="form-control"
                            id="address_2"
                            name="address_2"
-                           placeholder="">
+                           placeholder="Bureau de l'Élysée"
+                           value="{{ old('address_2') }}">
                 </div>
                 <div class="row">
                     <div class="col-md-5 mb-3">
                         <label for="city">Ville</label>
                         <input type="text"
-                               class="form-control"
+                               class="form-control @error('city') is-invalid @enderror"
                                id="city"
                                name="city"
-                               placeholder="">
+                               placeholder="Paris"
+                               value="{{ old('city') }}">
+                        @error('city')
+                        <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
                     </div>
                     <div class="col-md-3 mb-3">
                         <label for="zip_code">Code postal</label>
                         <input type="text"
-                               class="form-control"
+                               class="form-control @error('zip_code') is-invalid @enderror"
                                id="zip_code"
                                name="zip_code"
-                               placeholder="">
+                               placeholder="75008"
+                               value="{{ old('zip_code') }}">
+                        @error('zip_code')
+                        <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
                     </div>
                 </div>
                 {{-- BOUTON SUBMIT CRÉATION --}}
