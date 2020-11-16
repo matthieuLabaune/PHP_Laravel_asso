@@ -27,7 +27,7 @@ class StoreUser extends FormRequest
             'first_name' => 'required|string|max:255',
             'name' => 'required|string|max:255',
             'birthdate' => 'required|date|max:255',
-            'email' => 'required|email|max:255',
+            'email' => 'required|unique:App\Models\User,email|email|max:255',
             'phone' => 'required|max:255',
             'city' => 'required|string|max:255',
             'zip_code' => 'required|numeric|max:99999',
