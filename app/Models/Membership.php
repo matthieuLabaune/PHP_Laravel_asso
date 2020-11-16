@@ -12,4 +12,12 @@ class Membership extends JetstreamMembership
      * @var bool
      */
     public $incrementing = true;
+
+    public function user(){
+        return $this->belongsTo(User::class);
+    }
+
+    public function license(){
+        return $this->belongsTo(License::class);
+    }
 }

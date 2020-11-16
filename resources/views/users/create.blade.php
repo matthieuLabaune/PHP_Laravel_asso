@@ -75,7 +75,7 @@
                                            class="form-control @error('first_name') is-invalid @enderror"
                                            id="first_name"
                                            name="first_name"
-                                           placeholder="Macron"
+                                           placeholder="Emmanuel"
                                            value="{{ old('first_name') }}">
                                     @error('first_name')
                                     <div class="invalid-feedback">{{ $message }}</div>
@@ -87,7 +87,7 @@
                                            class="form-control @error('name') is-invalid @enderror"
                                            id="name"
                                            name="name"
-                                           placeholder="Emmanuel"
+                                           placeholder="Macron"
                                            value="{{ old('name') }}">
                                     @error('name')
                                     <div class="invalid-feedback">{{ $message }}</div>
