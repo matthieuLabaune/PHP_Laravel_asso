@@ -15,8 +15,12 @@ class CreateMembershipsTable extends Migration
     {
         Schema::create('memberships', function (Blueprint $table) {
             $table->id();
-            $table->integer('user_id');
-            $table->integer('licence_id');
+            $table->foreignId('user_id')->constrained('users')
+                ->onDelete('cascade')
+                ->onUpdate('cascade');
+            $table->foreignId('license_id')->constrained('licenses')
+                ->onDelete('cascade')
+                ->onUpdate('cascade');
             $table->string('payment_type');
             $table->integer('price');
             $table->date('start_date');

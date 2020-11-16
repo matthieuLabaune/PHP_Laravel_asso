@@ -70,7 +70,7 @@ class User extends Authenticatable
     public function getBirthDateAttribute($value)
     {
         {
-            return Carbon::parse($value)->format('m/d/Y');
+            return Carbon::parse($value)->format('d/m/Y');
         }
     }
 
@@ -81,12 +81,12 @@ class User extends Authenticatable
      * @param $value
      */
 
-    public function setBirthDateAttribute($value)
+/*    public function setBirthDateAttribute($value)
     {
         {
             $this->attributes['birthdate'] = Carbon::createFromFormat('d/m/Y', $value)->format('Y-m-d');
         }
-    }
+    }*/
 
     /**
      * The accessors to append to the model's array form.
@@ -97,7 +97,8 @@ class User extends Authenticatable
         'profile_photo_url',
     ];
 
-    public function membership(){
+    public function membership()
+    {
         return $this->hasMany(Membership::class);
     }
 
