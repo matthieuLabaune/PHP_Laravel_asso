@@ -9,7 +9,8 @@ class License extends Model
 {
     use HasFactory;
 
-    public function membership(){
-        return $this->hasMany(Membership::class);
+    public function users()
+    {
+        return $this->belongsToMany(User::class, 'memberships');
     }
 }

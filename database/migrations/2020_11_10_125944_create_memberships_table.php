@@ -22,9 +22,9 @@ class CreateMembershipsTable extends Migration
                 ->onDelete('cascade')
                 ->onUpdate('cascade');
             $table->string('payment_type');
-            $table->integer('price');
-            $table->date('start_date');
-            $table->date('end_start');
+            $table->integer('price')->nullable();
+            $table->date('start_date')->nullable();
+            $table->date('end_start')->nullable();
             $table->timestamps();
         });
     }

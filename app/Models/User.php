@@ -97,9 +97,8 @@ class User extends Authenticatable
         'profile_photo_url',
     ];
 
-    public function membership()
+    public function licenses()
     {
-        return $this->hasMany(Membership::class);
+        return $this->belongsToMany(License::class, 'memberships');
     }
-
 }

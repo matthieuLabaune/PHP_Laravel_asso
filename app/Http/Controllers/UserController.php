@@ -4,8 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreUser;
 use App\Http\Requests\UpdateUser;
+use App\Models\License;
 use App\Models\User;
-use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class UserController extends Controller
 {
@@ -14,9 +15,8 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = User::all();
+        $users = User::with('licenses')->get();
         return view('users.index', ['users' => $users]);
-        //
     }
 
     /**
@@ -29,57 +29,57 @@ class UserController extends Controller
 
     /**
      * @param StoreUser $request
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     * @param User $user
+     * @return \Illuminate\Http\RedirectResponse
      */
-    public function store(StoreUser $request)
+    public function store(StoreUser $request, User $user)
     {
-        User::create($request->all());
-
-        return redirect(route('users.index'));
+        /*User::create($request->all());*/
+        $user = new User();
+        $user->create($request->all());
+        return redirect()->route('users.index');
     }
 
     /**
      * @param User $user
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
-    public function show($id)
+    public function show(User $user)
     {
-        $user = User::findOrFail($id);
         return view('users.show', ['user' => $user]);
     }
 
     /**
-     * @param $id
+     * @param User $user
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
-    public function edit($id)
+    public function edit(User $user)
     {
-        $user = User::find($id);
         return view('users.edit', ['user' => $user]);
     }
 
     /**
-     * @param Request $request
+     * @param UpdateUser $request
      * @param User $user
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
-    public function update(UpdateUser $request, $id)
+    public function update(UpdateUser $request, User $user)
     {
-        $user = User::findOrFail($id);
-        $user->update($request->all());
+        $validated = $request->validated();
+        $user->update($validated->all());
         $user->save();
 
         return view('users.show', ['user' => $user]);
     }
 
     /**
-     * @param $id
+     * @param User $user
      * @return \Illuminate\Http\RedirectResponse
+     * @throws \Exception
      */
-    public function destroy($id)
+    public function destroy(User $user)
     {
-        $delete = User::findOrFail($id);
-        $delete->delete();
+        $user->delete();
         return redirect()->route('users.index');
     }
 }
