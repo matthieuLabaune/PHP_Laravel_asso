@@ -9,13 +9,6 @@ class Membership extends JetstreamMembership
 {
     use HasFactory;
 
-protected $fillable = [
-    'user_id',
-    'license_id',
-    'payment_type'
-];
-
-
     /**
      * Indicates if the IDs are auto-incrementing.
      *
@@ -23,11 +16,4 @@ protected $fillable = [
      */
     public $incrementing = true;
 
-   /* public function user(){
-        return $this->belongsTo(User::class);
-    }
-
-    public function license(){
-        return $this->belongsTo(License::class);
-    }*/
 }

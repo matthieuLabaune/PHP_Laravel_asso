@@ -34,7 +34,6 @@ class UserController extends Controller
      */
     public function store(StoreUser $request, User $user)
     {
-        /*User::create($request->all());*/
         $user = new User();
         $user->create($request->all());
         return redirect()->route('users.index');
@@ -65,9 +64,7 @@ class UserController extends Controller
      */
     public function update(UpdateUser $request, User $user)
     {
-        $validated = $request->validated();
-        $user->update($validated->all());
-        $user->save();
+        $user->update($request->all());
 
         return view('users.show', ['user' => $user]);
     }
