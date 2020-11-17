@@ -24,7 +24,8 @@ class UserController extends Controller
      */
     public function create()
     {
-        return view('users.create');
+        $licences = License::all();
+        return view('users.create', ['licenses' => $licences]);
     }
 
     /**
@@ -32,10 +33,10 @@ class UserController extends Controller
      * @param User $user
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function store(StoreUser $request, User $user)
+    public function store(StoreUser $request)
     {
-        $user = new User();
-        $user->create($request->all());
+        $user = User::create($request->all());
+        $user->licenses()->attach($request->cats);
         return redirect()->route('users.index');
     }
 
@@ -45,6 +46,7 @@ class UserController extends Controller
      */
     public function show(User $user)
     {
+        $user->with('licenses')->get();
         return view('users.show', ['user' => $user]);
     }
 
@@ -54,7 +56,8 @@ class UserController extends Controller
      */
     public function edit(User $user)
     {
-        return view('users.edit', ['user' => $user]);
+        $licenses = License::all();
+        return view('users.edit', ['user' => $user, 'licenses' => $licenses]);
     }
 
     /**
@@ -65,7 +68,7 @@ class UserController extends Controller
     public function update(UpdateUser $request, User $user)
     {
         $user->update($request->all());
-
+        $user->licenses()->sync($request->cats);
         return view('users.show', ['user' => $user]);
     }
 

@@ -182,6 +182,19 @@
                                     @enderror
                                 </div>
                             </div>
+                            <div class="row">
+                                <label class="label">License</label>
+                                <div class="select is-multiple">
+                                    <select name="cats[]" multiple>
+                                        @foreach($licenses as $license)
+                                            <option
+                                                value="{{ $license->id }}" {{ in_array($license->id, old('cats') ?: []) ? 'selected' : '' }}>{{ $license->name }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
+
+
                             {{-- BOUTON SUBMIT CRÉATION --}}
                             <button class="btn btn-primary" type="submit">Valider les modifications</button>
                         </form>

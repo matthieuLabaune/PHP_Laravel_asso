@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\LicenseController;
+use App\Http\Controllers\MembershipController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -26,4 +27,5 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 Route::middleware('auth')->group(function () {
     Route::resource('users', UserController::class);
     Route::resource('licenses', LicenseController::class);
+    Route::resource('memberships', MembershipController::class);
 });

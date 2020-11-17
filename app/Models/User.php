@@ -99,6 +99,6 @@ class User extends Authenticatable
 
     public function licenses()
     {
-        return $this->belongsToMany(License::class, 'memberships');
+        return $this->belongsToMany(License::class, 'memberships')->withPivot('payment_type','start_date', 'end_date', 'created_at', 'updated_at');
     }
 }

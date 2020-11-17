@@ -17,11 +17,12 @@ class License extends Model
     protected $fillable = [
         'name',
         'price',
-        'duration'
+        'duration',
+        'unity'
     ];
 
     public function users()
     {
-        return $this->belongsToMany(User::class, 'memberships');
+        return $this->belongsToMany(User::class, 'memberships')->withPivot('payment_type','start_date', 'end_date', 'created_at', 'updated_at');;
     }
 }

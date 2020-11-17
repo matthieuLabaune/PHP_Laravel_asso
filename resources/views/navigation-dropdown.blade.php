@@ -28,6 +28,12 @@
                         {{ __('Index des licences') }}
                     </x-jet-nav-link>
                 </div>
+
+                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                    <x-jet-nav-link href="{{ route('memberships.index') }}" :active="request()->routeIs('memberships.index')">
+                        {{ __('Index des adhésions') }}
+                    </x-jet-nav-link>
+                </div>
               {{--  <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                     <x-jet-nav-link href="{{ route('users.index') }}" :active="request()->routeIs('users.index')">
                         {{ __('Index des membres') }}

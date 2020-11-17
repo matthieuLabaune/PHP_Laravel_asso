@@ -8,19 +8,11 @@
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
-
                 {{-- Informations de suivi de la fiche membre/admin --}}
                 <div class="container mx-auto">
                     <div class="col-md-8 border border-2 rounded p-3">
                         <h2 class="text-2xl font-bold leading-7 text-gray-900 sm:text-3xl sm:leading-9 sm:truncate">
                             Fiche de licence n° ·
-                            {{-- @if($user->is_admin === '1')
-                                 <span
-                                     class="text text-success">Admin</span>
-                             @else
-                                 <span
-                                     class="text text-danger">Membre</span>
-                             @endif--}}
                         </h2>
                         <hr class="mb-4">
                         <div>
@@ -34,6 +26,7 @@
                                 </div>
                             </div>
                         </div>
+
                         <hr class="mb-4">
 
                         <form action="{{ route('licenses.store') }}" method="POST">
@@ -62,7 +55,7 @@
                                     <div class="invalid-feedback">{{ $message }}</div>
                                     @enderror
                                 </div>
-                                <div class="col-md-12 mb-3">
+                                <div class="col-md-6 mb-3">
                                     <label for="duration">Durée</label>
                                     <input type="text"
                                            class="form-control @error('duration') is-invalid @enderror"
@@ -73,9 +66,23 @@
                                     <div class="invalid-feedback">{{ $message }}</div>
                                     @enderror
                                 </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="unity">unité</label>
+                                    <select class="form-control @error('enum') is-invalid @enderror"
+                                            id="unity"
+                                            name="unity">
+                                        <option>année(s)</option>
+                                        <option>mois</option>
+                                        <option>jour(s)</option>
+                                        @error('unity')
+                                        <div class="invalid-feedback">{{ $message }}</div>
+                                        @enderror
+                                    </select>
+                                </div>
+                                <div class="col-md-6">
+                                    <button class="btn btn-primary" type="submit">Valider les modifications</button>
+                                </div>
                             </div>
-                            {{-- BOUTON SUBMIT --}}
-                            <button class="btn btn-primary" type="submit">Valider les modifications</button>
                         </form>
                     </div>
                 </div>

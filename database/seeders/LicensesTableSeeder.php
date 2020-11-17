@@ -15,38 +15,38 @@ class LicensesTableSeeder extends Seeder
     public function run()
     {
         License::create([
-            'name' => 'Loisir',
+            'name' => 'Loisirs',
             'price' => 20,
             'duration' => 12,
-            'enum' => 'month'
+            'unity' => 'mois'
         ]);
 
         License::create([
             'name' => 'Compétition',
             'price' => 40,
             'duration' => 12,
-            'enum' => 'month'
+            'unity' => 'mois'
         ]);
 
         License::create([
             'name' => 'Dirigeant',
             'price' => 50,
             'duration' => 12,
-            'enum' => 'month'
+            'unity' => 'mois'
         ]);
 
         License::create([
             'name' => 'Sans-emploi',
             'price' => 10,
             'duration' => 12,
-            'enum' => 'month'
+            'unity' => 'mois'
         ]);
 
         License::create([
             'name' => 'Famille',
             'price' => 40,
             'duration' => 12,
-            'enum' => 'month'
+            'unity' => 'mois'
         ]);
     }
 }

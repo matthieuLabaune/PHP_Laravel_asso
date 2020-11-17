@@ -21,10 +21,10 @@ class CreateMembershipsTable extends Migration
             $table->foreignId('license_id')->constrained('licenses')
                 ->onDelete('cascade')
                 ->onUpdate('cascade');
-            $table->string('payment_type');
+            $table->string('payment_type')->nullable();
             $table->integer('price')->nullable();
             $table->date('start_date')->nullable();
-            $table->date('end_start')->nullable();
+            $table->date('end_date')->nullable();
             $table->timestamps();
         });
     }

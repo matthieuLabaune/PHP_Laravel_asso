@@ -241,12 +241,30 @@
                                     @enderror
                                 </div>
                             </div>
-                            {{-- BOUTON SUBMIT --}}
-                            <button
-                                class="btn inline-flex items-center px-4 py-2 border border-transparent text-sm leading-5 font-medium rounded-md text-white bg-green-600 hover:bg-green-500 focus:outline-none focus:shadow-outline-green focus:border-green-700 active:bg-green-700 transition duration-150 ease-in-out"
-                                type="submit">
-                                Valider les modifications
-                            </button>
+
+                            <div class="row">
+                                <div class="form-group col-md-6 mb-3">
+                                    <div class="field">
+                                        <label class="label">Adhésions : </label>
+                                        <div class="select is-multiple">
+                                            <select name="cats[]" multiple>
+                                                @foreach($licenses as $license)
+                                                    <option
+                                                        value="{{ $license->id }}" {{ in_array($license->id, old('cats') ?: $user->licenses->pluck('id')->all()) ? 'selected' : '' }}>{{ $license->name }}</option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    {{-- BOUTON SUBMIT --}}
+                                    <button
+                                        class="btn inline-flex items-center px-4 py-2 border border-transparent text-sm leading-5 font-medium rounded-md text-white bg-green-600 hover:bg-green-500 focus:outline-none focus:shadow-outline-green focus:border-green-700 active:bg-green-700 transition duration-150 ease-in-out"
+                                        type="submit">
+                                        Valider les modifications
+                                    </button>
+                                </div>
+                            </div>
                         </form>
                     </div>
                 </div>

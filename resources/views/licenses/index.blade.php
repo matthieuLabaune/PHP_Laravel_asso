@@ -60,7 +60,7 @@
                                                 </td>
 
                                                 <td class="px-6 py-4 whitespace-no-wrap">
-                                                    {{$license->duration}}
+                                                    {{$license->duration}} {{$license->unity}}
                                                 </td>
                                                 <td class="px-6 py-4 whitespace-no-wrap">
                                                     @foreach($license->users as $user)

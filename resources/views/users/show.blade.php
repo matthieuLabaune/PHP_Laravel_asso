@@ -217,9 +217,15 @@
                                            disabled>
                                 </div>
                             </div>
+                            <div>
+                                <h2>Adhésion(s) :</h2>
+                                <ul>
+                                    @foreach($user->licenses as $license)
+                                        <li>{{ $license->name }}</li>
+                                    @endforeach
+                                </ul>
+                            </div>
                         </form>
-
-
                     </div>
                 </div>
             </div>
