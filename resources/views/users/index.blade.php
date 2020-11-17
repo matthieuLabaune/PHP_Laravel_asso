@@ -6,7 +6,7 @@
     </x-slot>
 
     <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+        <div class="max-w-8xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
 
                 <div class="m-2">
@@ -39,7 +39,7 @@
                                                 Rôle
                                             </th>
                                             <th class="px-6 py-3 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
-                                                Adhésion
+                                                Adhésion(s)
                                             </th>
                                             <th class="px-6 py-3 bg-gray-50"></th>
                                         </tr>
@@ -100,7 +100,9 @@
                                                 </td>
                                                 <td class="px-6 py-4 whitespace-no-wrap text-sm leading-5 text-gray-500">
                                                     @foreach($user->licenses as $license)
-                                                        {{$license->name}}
+                                                        <li><a href="{{route('licenses.show', $license->id)}}">
+                                                                {{$license->name}}</a>
+                                                        </li>
                                                     @endforeach
                                                 </td>
                                                 <td class="px-6 py-4 whitespace-no-wrap text-right text-sm leading-5 lg:focus:font-light">
