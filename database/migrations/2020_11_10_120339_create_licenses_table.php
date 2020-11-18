@@ -18,8 +18,8 @@ class CreateLicensesTable extends Migration
             $table->string('name');
             $table->integer('price');
             $table->integer('duration');
-            $table->enum('enum', ['year', 'month', 'day']);
-            $table->string('start_date');
+            $table->enum('unity', ['anné(s)', 'mois', 'jour(s)']);
+/*            $table->string('start_date');*/
             $table->timestamps();
         });
     }

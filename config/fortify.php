@@ -88,7 +88,7 @@ return [
     */
 
     'limiters' => [
-        'login' => null,
+        'login' => 3,
     ],
 
     /*
@@ -121,9 +121,9 @@ return [
 /*        Features::emailVerification(),*/
         Features::updateProfileInformation(),
         Features::updatePasswords(),
-        Features::twoFactorAuthentication([
+        /*Features::twoFactorAuthentication([
             'confirmPassword' => true,
-        ]),
+        ]),*/
     ],
 
 ];
