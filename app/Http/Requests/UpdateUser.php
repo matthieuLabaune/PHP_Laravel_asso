@@ -37,25 +37,4 @@ class UpdateUser extends FormRequest
             'gender' => 'required'
         ];
     }
-
-   /**
-     * Get the error messages for the defined validation rules.
-     *
-     * @return array
-     */
-    /* public function messages()
-    {
-        return [
-            'first_name.required' => 'Un prénom est obligatoire',
-            'name.required' => 'Un nom est obligatoire',
-            'birthdate.required' => 'Une date de naissance est obligatoire',
-            'email.required' => 'Une adresse email est obligatoire',
-            'phone.required' => 'Un numéro de téléphone est obligatoire',
-            'city.required' => 'Une ville est obligatoire',
-            'zip_code.required' => 'Un code postal est obligatoire',
-            'address_1.required' => 'Une adresse est obligatoire',
-            'role.required' => 'Un rôle est obligatoire',
-            'gender.required' => 'Une identité est obligatoire',
-        ];
-    }*/
 }
