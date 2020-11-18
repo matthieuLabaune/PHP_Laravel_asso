@@ -70,7 +70,7 @@
                                                                 {{$user -> name}} {{$user->first_name}}
                                                             </div>
                                                             <div class="text-sm leading-5 text-gray-500">
-                                                                {{ $user->birthdate}}
+                                                               Né(e) le : {{ $user->birthdate}}
                                                             </div>
                                                         </div>
                                                     </div>
@@ -99,18 +99,19 @@
                                                     @endif
                                                 </td>
                                                 <td class="px-6 py-4 whitespace-no-wrap text-sm leading-5 text-gray-500">
-                                                        @foreach($user->licenses as $license)
-                                                            <li><a href="{{route('licenses.show', $license->id)}}">
-                                                                    {{$license->name}}</a>
-                                                                · {{ $license->pivot->created_at }}
-                                                            </li>
-                                                        @endforeach
+                                                    @foreach($user->licenses as $license)
+                                                        <li><a href="{{route('licenses.show', $license->id)}}">
+                                                                Type : {{$license->name}}</a>
+                                                        </li>
+                                                        <li>Prix : {{$license->price}}</li>
+                                                        <li>Créée le : {{$license->pivot->created_at }}</li>
+                                                    @endforeach
                                                 </td>
                                                 <td class="px-6 py-4 whitespace-no-wrap text-right text-sm leading-5 lg:focus:font-light">
 
-                                                   {{-- <a class="btn bg-green-300 hover:bg-green-200 text-gray-800 font-semibold py-2 px-4 rounded shadow"
-                                                       href="{{route('.create')}}"
-                                                       role="button">Nouveau membre</a>--}}
+                                                    {{-- <a class="btn bg-green-300 hover:bg-green-200 text-gray-800 font-semibold py-2 px-4 rounded shadow"
+                                                        href="{{route('.create')}}"
+                                                        role="button">Nouveau membre</a>--}}
 
                                                     <div class="inline-flex">
                                                         <a class="btn bg-blue-200 hover:bg-blue-700 text-gray-800  rounded-full shadow mr-1"

@@ -96,6 +96,7 @@
                 <hr class="mb-4">
 
                 <div class="container m-5">
+                    <div class="font-bold leading-7 text-gray-900 sm:text-2xl mt-2">Informations</div>
                     <div class="col-md-8 border border-2 rounded p-3">
                         <form class="needs-validation" novalidate>
                             <div class="row">
@@ -217,16 +218,52 @@
                                            disabled>
                                 </div>
                             </div>
-                            <div>
-                                <h2>Adhésion(s) :</h2>
-                                <ul>
-                                    @foreach($user->licenses as $license)
-                                        <li>{{ $license->name }}</li>
-                                    @endforeach
-                                </ul>
-                            </div>
                         </form>
+                    </div>
+
+                    <div class="font-bold leading-7 text-gray-900 sm:text-2xl mt-3">Adhésion(s)</div>
+                    <div class="col-md-8 border border-2 rounded p-3">
+                        <div class="row">
+                            @foreach($user->licenses as $license)
+                                <div class="col-md-3">
+                                    <label for="type">Catégorie</label>
+                                    <input type="text"
+                                           class="form-control"
+                                           id="type"
+                                           value="{{ $license->name }}"
+                                           disabled>
+                                </div>
+
+                                <div class="col-md-3">
+                                    <label for="created_at">Durée <span
+                                            class="text-muted">(en {{ $license->unity }})</span></label>
+                                    <input type="text"
+                                           class="form-control"
+                                           id="created_at"
+                                           value="{{ $license->duration }}"
+                                           disabled>
+                                </div>
+                                <div class="col-md-3">
+                                    <label for="created_at">Prix <span class="text-muted">(€)</span></label>
+                                    <input type="text"
+                                           class="form-control"
+                                           id="created_at"
+                                           value="{{ $license->price }}"
+                                           disabled>
+                                </div>
+                               {{-- <div class="col-md-3">
+                                    <label for="payment_type">Paiement</label>
+                                    <input type="text"
+                                           class="form-control"
+                                           id="payment_type"
+                                           value="  {{$license->pivot->payment_type }}"
+                                           disabled>
+                                </div>--}}
+                            @endforeach
+                        </div>
                     </div>
                 </div>
             </div>
+        </div>
+    </div>
 </x-app-layout>

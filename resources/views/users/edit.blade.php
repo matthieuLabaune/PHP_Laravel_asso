@@ -242,33 +242,71 @@
                                 </div>
                             </div>
 
+                            <div class="font-bold leading-7 text-gray-900 sm:text-2xl mt-3">Adhésion(s)</div>
                             <div class="row">
-                                <div class="form-group col-md-6 mb-3">
+                                <div class="col-md-3">
                                     <div class="field">
-                                        <label class="label">Adhésions : </label>
-                                        <div class="select is-multiple">
-                                            <select name="cats[]" multiple>
+                                        <label class="label">Catégorie</label>
+                                        <div class="select">
+                                            <select name="cats[]">
                                                 @foreach($licenses as $license)
                                                     <option
-                                                        value="{{ $license->id }}" {{ in_array($license->id, old('cats') ?: $user->licenses->pluck('id')->all()) ? 'selected' : '' }}>{{ $license->name }}</option>
+                                                        value="{{ $license->id }}" {{ in_array($license->id, old('cats') ?: $user->licenses->pluck('id')->all()) ? 'selected' : '' }}>{{ $license->name }}
+                                                    </option>
                                                 @endforeach
                                             </select>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-md-6 mb-3">
-                                    {{-- BOUTON SUBMIT --}}
-                                    <button
-                                        class="btn inline-flex items-center px-4 py-2 border border-transparent text-sm leading-5 font-medium rounded-md text-white bg-green-600 hover:bg-green-500 focus:outline-none focus:shadow-outline-green focus:border-green-700 active:bg-green-700 transition duration-150 ease-in-out"
-                                        type="submit">
-                                        Valider les modifications
-                                    </button>
-                                </div>
+
+                                @foreach($user->licenses as $license)
+                                    <div class="col-md-3">
+                                        <label for="created_at">Durée <span class="text-muted">(en {{ $license->unity }})</span></label>
+                                        <input type="text"
+                                               class="form-control"
+                                               id="created_at"
+                                               value="{{ $license->duration }}">
+                                    </div>
+                                    <div class="col-md-3">
+                                        <label for="created_at">Prix <span class="text-muted">(€)</span></label>
+                                        <input type="text"
+                                               class="form-control"
+                                               id="price"
+                                               name="price"
+                                               value="{{ $license->price }}">
+                                    </div>
+                                @endforeach
+                                {{--   {{ dd($license->pivot->payment_type) }}--}}
+                               {{-- <div class="col-md-3">
+                                    <div class="col-md-3">
+                                        <div class="field">
+                                            <label class="label">Payement</label>
+                                            <div class="select">
+                                                <select name="cats[]">
+                                                    @foreach($user->licenses as $license)
+                                                        <option
+                                                            value="{{ $license->id }}" {{ in_array($license->id, old('cats') ?: $user->licenses->pluck('id')->all()) ? 'selected' : '' }}>{{ $license->pivot->payment_type }}
+                                                        </option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>--}}
+                            </div>
+
+
+                            <div class="col-md-6 mt-3 mb-3">
+                                {{-- BOUTON SUBMIT --}}
+                                <button
+                                    class="btn inline-flex items-center px-4 py-2 border border-transparent text-sm leading-5 font-medium rounded-md text-white bg-green-600 hover:bg-green-500 focus:outline-none focus:shadow-outline-green focus:border-green-700 active:bg-green-700 transition duration-150 ease-in-out"
+                                    type="submit">
+                                    Valider les modifications
+                                </button>
                             </div>
                         </form>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
 </x-app-layout>

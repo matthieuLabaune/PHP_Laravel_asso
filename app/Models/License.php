@@ -23,6 +23,6 @@ class License extends Model
 
     public function users()
     {
-        return $this->belongsToMany(User::class, 'memberships')->withPivot('payment_type','start_date', 'end_date', 'created_at', 'updated_at');;
+        return $this->belongsToMany(User::class, 'memberships')->withPivot('payment_type','start_date', 'end_date')->withTimestamps();
     }
 }

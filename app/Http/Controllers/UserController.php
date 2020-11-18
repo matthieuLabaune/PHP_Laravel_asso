@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreUser;
 use App\Http\Requests\UpdateUser;
 use App\Models\License;
+use App\Models\Membership;
 use App\Models\User;
 use Illuminate\Support\Facades\DB;
 
@@ -25,7 +26,8 @@ class UserController extends Controller
     public function create()
     {
         $licences = License::all();
-        return view('users.create', ['licenses' => $licences]);
+        $memberships = Membership::all();
+        return view('users.create', ['licenses' => $licences, 'memberships' => $memberships]);
     }
 
     /**
