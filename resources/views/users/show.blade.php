@@ -13,12 +13,12 @@
                         {{--<-- TITRE DE LA FICHE ->>--}}
                         <h2 class="text-2xl font-bold leading-7 text-gray-900 sm:text-3xl sm:leading-9 sm:truncate">
                             Fiche n° {{$user -> id }} ·
-                            @if($user->is_admin === '1')
+                            @if($user->role == 'admin')
                                 <span
                                     class="text text-success">Admin</span>
                             @else
                                 <span
-                                    class="text text-danger">Adhérent</span>
+                                    class="text text-danger">Membre</span>
                             @endif
                         </h2>
                         {{--<-- INFORMATIONS DE SUIVI ->>--}}
@@ -70,9 +70,10 @@
                         </span>
                         <span class="sm:ml-3 shadow-sm rounded-md">
 
-                             <form action="{{ route('users.destroy', $user->id) }}" method="POST">
+                           @if(Auth::user()->role === 'admin')
+                                <form action="{{ route('users.destroy', $user->id) }}" method="POST">
                                 @csrf
-                                 @method('DELETE')
+                                    @method('DELETE')
                                   <button type="submit"
                                           role="button"
                                           class="inline-flex items-center px-4 py-2 border border-transparent text-sm leading-5 font-medium rounded-md text-white bg-red-600 hover:bg-red-500 focus:outline-none focus:shadow-outline-red focus:border-red-700 active:bg-red-700 transition duration-150 ease-in-out">
@@ -89,6 +90,7 @@
                                     Suppression
                                   </button>
                              </form>
+                            @endif
                         </span>
                     </div>
                 </div>
@@ -102,21 +104,25 @@
                             <div class="row">
                                 {{-- CIVILITÉ --}}
                                 <div class="form-group has-feedback col-md-6 mb-3 ">
-                                    <label>Rôle</label>
-                                    <div>
-                                        @if($user->role == 1)
-                                            <input type="radio" id="membre" name="role" value="0" disabled>
-                                            <label for="membre">Membre</label><br>
-                                            <input type="radio" id="1" name="role" value="1" checked="checked" disabled>
-                                            <label for="admin">Admin</label><br>
-                                        @else
-                                            <input type="radio" id="membre" name="role" value="0" checked="checked"
-                                                   disabled>
-                                            <label for="membre">Membre</label><br>
-                                            <input type="radio" id="1" name="role" value="1" disabled>
-                                            <label for="admin">Admin</label><br>
-                                        @endif
-                                    </div>
+                                    @if(Auth::user()->role === 'admin')
+                                        <label>Rôle</label>
+                                        <div>
+                                            @if($user->role == 'admin')
+                                                <input type="radio" id="membre" name="role" value="membre" disabled>
+                                                <label for="membre">Membre</label><br>
+                                                <input type="radio" id="1" name="role" value="admin" checked="checked"
+                                                       disabled>
+                                                <label for="admin">Admin</label><br>
+                                            @else
+                                                <input type="radio" id="membre" name="role" value="membre"
+                                                       checked="checked"
+                                                       disabled>
+                                                <label for="membre">Membre</label><br>
+                                                <input type="radio" id="1" name="role" value="admin" disabled>
+                                                <label for="admin">Admin</label><br>
+                                            @endif
+                                        </div>
+                                    @endif
                                 </div>
 
                                 <div class="form-group has-feedback col-md-6 mb-3">
@@ -251,14 +257,14 @@
                                            value="{{ $license->price }}"
                                            disabled>
                                 </div>
-                               {{-- <div class="col-md-3">
-                                    <label for="payment_type">Paiement</label>
-                                    <input type="text"
-                                           class="form-control"
-                                           id="payment_type"
-                                           value="  {{$license->pivot->payment_type }}"
-                                           disabled>
-                                </div>--}}
+                                {{-- <div class="col-md-3">
+                                     <label for="payment_type">Paiement</label>
+                                     <input type="text"
+                                            class="form-control"
+                                            id="payment_type"
+                                            value="  {{$license->pivot->payment_type }}"
+                                            disabled>
+                                 </div>--}}
                             @endforeach
                         </div>
                     </div>

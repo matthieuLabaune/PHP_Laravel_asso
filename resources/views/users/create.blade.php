@@ -11,6 +11,11 @@
                 {{-- Informations de suivi de la fiche membre/admin --}}
                 <div class="container mx-auto">
                     <div class="col-md-8 border border-2 rounded m-3 p-3">
+                        @if($errors->any())
+                            <div class="alert alert-danger">
+                                <h1>{{$errors->first()}}</h1>
+                            </div>
+                        @endif
                         <h2 class="text-2xl font-bold leading-7 text-gray-900 sm:text-3xl sm:leading-9 sm:truncate">
                             Fiche du membre n° ·
                             {{-- @if($user->is_admin === '1')
@@ -45,10 +50,10 @@
                                     <div class="form-group has-feedback col-md-6 mb-3">
                                         <label>Rôle</label>
                                         <div>
-                                            <input type="radio" id="membre" name="role" value="0"
+                                            <input type="radio" id="membre" name="role" value="membre"
                                                    class="@error('role') is-invalid @enderror">
                                             <label for="membre">Membre</label><br>
-                                            <input type="radio" id="membre" name="role" value="1"
+                                            <input type="radio" id="membre" name="role" value="admin"
                                                    class="@error('role') is-invalid @enderror">
                                             <label for="admin">Admin</label><br>
                                             @error('role')

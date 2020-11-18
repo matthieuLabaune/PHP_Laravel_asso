@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use App\Models\User;
 use Illuminate\Foundation\Http\FormRequest;
 
 class UpdateLicense extends FormRequest
@@ -11,9 +12,13 @@ class UpdateLicense extends FormRequest
      *
      * @return bool
      */
-    public function authorize()
+    public function authorize(User $user)
     {
-        return true;
+        if ($user && $user->role == 'admin') {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     /**
@@ -27,6 +32,6 @@ class UpdateLicense extends FormRequest
             'name' => 'required|string|max:255',
             'price' => 'required',
             'duration' => 'required'
-            ];
+        ];
     }
 }

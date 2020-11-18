@@ -70,7 +70,7 @@
                                                                 {{$user -> name}} {{$user->first_name}}
                                                             </div>
                                                             <div class="text-sm leading-5 text-gray-500">
-                                                               Né(e) le : {{ $user->birthdate}}
+                                                                Né(e) le : {{ $user->birthdate}}
                                                             </div>
                                                         </div>
                                                     </div>
@@ -90,7 +90,7 @@
                                                         class="text-sm leading-5 text-gray-900">{{$user->address_1}}</div>
                                                 </td>
                                                 <td class="px-6 py-4 whitespace-no-wrap text-sm leading-5 text-gray-500">
-                                                    @if($user->role == 1)
+                                                    @if($user->role == 'admin')
                                                         <span
                                                             class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-200 text-green-800">Admin</span>
                                                     @else
@@ -100,8 +100,8 @@
                                                 </td>
                                                 <td class="px-6 py-4 whitespace-no-wrap text-sm leading-5 text-gray-500">
                                                     @foreach($user->licenses as $license)
-                                                        <li><a href="{{route('licenses.show', $license->id)}}">
-                                                                Type : {{$license->name}}</a>
+                                                        <li> Type : <a href="{{route('licenses.show', $license->id)}}">
+                                                                {{$license->name}}</a>
                                                         </li>
                                                         <li>Prix : {{$license->price}}</li>
                                                         <li>Créée le : {{$license->pivot->created_at }}</li>
