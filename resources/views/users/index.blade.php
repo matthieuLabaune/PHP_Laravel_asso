@@ -9,13 +9,20 @@
         <div class="max-w-8xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
 
-                <div class="m-2">
-                    <div class="col-md-3 mt-3 mb-3">
-                        <a class="btn bg-green-300 hover:bg-green-200 text-gray-800 font-semibold py-2 px-4 rounded shadow"
-                           href="{{route('users.create')}}"
-                           role="button">Nouveau membre</a>
-                    </div>
 
+                <div class="m-2">
+                    <div class="row">
+                        <div class="ml-3 mt-3 mb-3">
+                            <a class="btn bg-green-300 hover:bg-green-200 text-gray-800 font-semibold py-2 px-4 rounded shadow"
+                               href="{{route('users.create')}}"
+                               role="button">Nouveau membre</a>
+                        </div>
+
+                        <div class="ml-3 mt-3 mb-3">
+                            <livewire:search/>
+                        </div>
+                    </div>
+                    <hr class="mb-4">
                     <div class="flex flex-col">
                         <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
                             <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
@@ -100,7 +107,8 @@
                                                 </td>
                                                 <td class="px-6 py-4 whitespace-no-wrap text-sm leading-5 text-gray-500">
                                                     @foreach($user->licenses as $license)
-                                                        <li> Type : <a href="{{route('licenses.show', $license->id)}}">
+                                                        <li> Type : <a
+                                                                href="{{route('licenses.show', $license->id)}}">
                                                                 {{$license->name}}</a>
                                                         </li>
                                                         <li>Prix : {{$license->price}}</li>

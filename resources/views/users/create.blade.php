@@ -190,7 +190,6 @@
                                 </div>
 
                                 <div class="container mx-auto">
-
                                     <div class="font-bold leading-7 text-gray-900 sm:text-2xl mt-3">Adhésion(s)
                                     </div>
                                     <div class="row">
