@@ -27,6 +27,6 @@ Route::middleware('auth')->group(function () {
         Route::resource('users', UserController::class);
         Route::resource('licenses', LicenseController::class);
     });
-    Route::resource('users', UserController::class)->only('show', 'edit');
+    Route::resource('users', UserController::class)->only('show', 'edit', 'update', 'index');
     Route::resource('licenses', LicenseController::class)->only('show');
 });

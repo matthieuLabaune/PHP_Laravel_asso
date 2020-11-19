@@ -12,13 +12,9 @@ class UpdateLicense extends FormRequest
      *
      * @return bool
      */
-    public function authorize(User $user)
+    public function authorize()
     {
-        if ($user && $user->role == 'admin') {
-            return true;
-        } else {
-            return false;
-        }
+       return true ;
     }
 
     /**

@@ -9,14 +9,16 @@ use App\Models\Membership;
 use App\Models\Team;
 use App\Models\User;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Gate;
 
 class UserController extends Controller
 {
     /**
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
-    public function index()
+    public function index(User $user)
     {
+
         $users = User::with('licenses')->get();
         return view('users.index', ['users' => $users]);
     }
