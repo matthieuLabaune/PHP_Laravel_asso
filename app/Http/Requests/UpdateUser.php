@@ -33,7 +33,6 @@ class UpdateUser extends FormRequest
             'zip_code' => 'required|numeric|max:99999',
             'address_1' => 'required|string|max:255',
             'address_2' => 'nullable|string|max:255',
-            'role' => 'required',
             'gender' => 'required'
         ];
     }

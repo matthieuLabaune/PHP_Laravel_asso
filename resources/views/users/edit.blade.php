@@ -102,7 +102,8 @@
 
                 <hr class="mb-4">
 
-                <div class="container m-5">
+                <div class="container m-3">
+                    <div class="font-bold leading-7 text-gray-900 sm:text-2xl">Informations</div>
                     <div class="col-md-8 border border-2 rounded p-3">
                         {{-- FORMULAIRE D'EDITION --}}
                         <form action="{{ route('users.update', $user->id) }}" method="POST">
@@ -303,4 +304,5 @@
                 </div>
             </div>
         </div>
+    </div>
 </x-app-layout>

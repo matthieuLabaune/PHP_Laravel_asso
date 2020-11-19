@@ -62,33 +62,6 @@ class User extends Authenticatable
     ];
 
     /**
-     * Accessor pour changer le format de la date dans les views
-     *
-     * @param $value
-     * @return string
-     */
-  /*  public function getBirthDateAttribute($value)
-    {
-        {
-            return Carbon::parse($value)->format('d-m-Y');
-        }
-    }*/
-
-    /**
-     *
-     * Mutator pour changer le format de retour dans la BDD (MYSQL format Y-M-D)
-     *
-     * @param $value
-     */
-
-   /* public function setBirthDateAttribute($value)
-    {
-        {
-            $this->attributes['birthdate'] = Carbon::createFromFormat('d-m-Y', $value)->format('Y-m-d');
-        }
-    }*/
-
-    /**
      * The accessors to append to the model's array form.
      *
      * @var array
@@ -97,8 +70,16 @@ class User extends Authenticatable
         'profile_photo_url',
     ];
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
     public function licenses()
     {
         return $this->belongsToMany(License::class, 'memberships')->withPivot('payment_type','start_date', 'end_date')->withTimestamps();
+    }
+
+    public function isAdmin()
+    {
+        return $this->role === 'admin' ;
     }
 }
