@@ -1,6 +1,7 @@
 <?php
 use App\Http\Controllers\LicenseController;
 use App\Http\Controllers\UserController;
+use App\Models\Membership;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -29,4 +30,5 @@ Route::middleware('auth')->group(function () {
     });
     Route::resource('users', UserController::class)->only('show', 'edit', 'update', 'index');
     Route::resource('licenses', LicenseController::class)->only('show');
+    Route::resource('memberships', Membership::class);
 });

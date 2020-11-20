@@ -253,7 +253,7 @@
                                 </div>
                             </div>
 
-                            @if(Auth::user()->role === 'admin')
+{{--                            @if(Auth::user()->role === 'admin')
                                 <div class="font-bold leading-7 text-gray-900 sm:text-2xl mt-3">Adhésion(s)</div>
                                 <div class="row">
                                     <div class="col-md-3">
@@ -289,7 +289,7 @@
                                         </div>
                                     @endforeach
                                 </div>
-                            @endif
+                            @endif--}}
 
                             <div class="col-md-6 mt-3 mb-3">
                                 {{-- BOUTON SUBMIT --}}

@@ -3,10 +3,11 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Laravel\Jetstream\Membership as JetstreamMembership;
+use Illuminate\Database\Eloquent\Model;
 
-class Membership extends JetstreamMembership
+class Membership extends Model
 {
+    use HasFactory;
 
     /**
      * Indicates if the IDs are auto-incrementing.
@@ -15,4 +16,13 @@ class Membership extends JetstreamMembership
      */
     public $incrementing = true;
 
+    public function user()
+    {
+        return $this->belongsTo('App\Models\User');
+    }
+
+    public function license()
+    {
+        return $this->belongsTo('App\Models\License');
+    }
 }

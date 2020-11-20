@@ -39,5 +39,11 @@
         @stack('modals')
 
         @livewireScripts
+        <script type="text/javascript">
+            window.livewire.on('userStore', () => {
+                $('#deleteModal').modal('hide');
+            });
+        </script>
+
     </body>
 </html>

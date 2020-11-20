@@ -73,13 +73,24 @@ class User extends Authenticatable
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
      */
-    public function licenses()
+   /* public function licenses()
     {
-        return $this->belongsToMany(License::class, 'memberships')->withPivot('payment_type','start_date', 'end_date')->withTimestamps();
-    }
+        return $this->belongsToMany(License::class, 'memberships')->withPivot('payment_type', 'start_date', 'end_date')->withTimestamps();
+    }*/
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+      public function memberships()
+      {
+          return $this->hasMany('App\Models\Membership');
+      }
+
+    /**
+     * @return bool
+     */
     public function isAdmin()
     {
-        return $this->role === 'admin' ;
+        return $this->role === 'admin';
     }
 }

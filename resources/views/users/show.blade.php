@@ -227,7 +227,7 @@
                         </form>
                     </div>
 
-                    <div class="font-bold leading-7 text-gray-900 sm:text-2xl mt-3">Adhésion(s)</div>
+                   {{-- <div class="font-bold leading-7 text-gray-900 sm:text-2xl mt-3">Adhésion(s)</div>
                     <div class="col-md-8 border border-2 rounded p-3">
                         <div class="row">
                             @foreach($user->licenses as $license)
@@ -256,7 +256,7 @@
                                            id="created_at"
                                            value="{{ $license->price }}"
                                            disabled>
-                                </div>
+                                </div>--}}
                                 {{-- <div class="col-md-3">
                                      <label for="payment_type">Paiement</label>
                                      <input type="text"
@@ -264,8 +264,8 @@
                                             id="payment_type"
                                             value="  {{$license->pivot->payment_type }}"
                                             disabled>
-                                 </div>--}}
-                            @endforeach
+                                 </div>
+                            @endforeach--}}
                         </div>
                     </div>
                 </div>

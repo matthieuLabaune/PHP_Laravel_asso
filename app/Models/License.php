@@ -21,8 +21,13 @@ class License extends Model
         'unity'
     ];
 
-    public function users()
+/*    public function users()
     {
-        return $this->belongsToMany(User::class, 'memberships')->withPivot('payment_type','start_date', 'end_date')->withTimestamps();
-    }
+        return $this->belongsToMany(User::class, 'memberships')->withPivot('payment_type', 'start_date', 'end_date')->withTimestamps();
+    }*/
+
+      public function memberships()
+      {
+          return $this->hasMany('App\Models\Membership');
+      }
 }

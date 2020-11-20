@@ -10,12 +10,12 @@ class UserPolicy
 {
     use HandlesAuthorization;
 
-    public function before(User $user, $ability)
+    /*public function before(User $user, $ability)
     {
         if($user->isAdmin()){
             return true;
         }
-    }
+    }*/
 
     /**
      * Determine whether the user can view any models.
@@ -60,9 +60,9 @@ class UserPolicy
      */
     public function update(User $user, User $model)
     {
-        if (Auth::user()->role === 'admin'){
+       /* if (Auth::user()->role === 'admin'){
             return $user->all();
-        }
+        }*/
         return auth()->id() === $model->id;
     }
 
@@ -75,7 +75,7 @@ class UserPolicy
      */
     public function delete(User $user, User $model)
     {
-        //
+
     }
 
     /**

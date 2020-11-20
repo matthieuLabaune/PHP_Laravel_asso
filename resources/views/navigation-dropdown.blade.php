@@ -31,6 +31,14 @@
                         </x-jet-nav-link>
                     </div>
                 @endif
+                @if(Auth::user()->role =='admin')
+                    <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                        <x-jet-nav-link href="{{ route('memberships.index') }}"
+                                        :active="request()->routeIs('memberships.index')">
+                            {{ __('Index des adhésions') }}
+                        </x-jet-nav-link>
+                    </div>
+                @endif
             </div>
 
             <!-- Settings Dropdown -->

@@ -6,20 +6,17 @@ use App\Http\Requests\StoreUser;
 use App\Http\Requests\UpdateUser;
 use App\Models\License;
 use App\Models\Membership;
-use App\Models\Team;
 use App\Models\User;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Gate;
+
 
 class UserController extends Controller
 {
     /**
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
-    public function index(User $user)
+    public function index()
     {
-
-        $users = User::with('licenses')->get();
+        $users = User::with('memberships.license')->get();
         return view('users.index', ['users' => $users]);
     }
 
@@ -38,21 +35,11 @@ class UserController extends Controller
      * @param User $user
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function store(StoreUser $request, Team $team)
+    public function store(StoreUser $request)
     {
         $user = User::create($request->all());
-        $user->licenses()->attach($request->cats);
+        /*     $user->licenses()->attach($request->cats);*/
         return redirect()->route('users.index');
-        /*
-         * IF TEAMS ARE ENABLED IN JETSTREAM
-         *
-                if ($request->user()->hasTeamPermission($team, 'read')) {
-                    $user = User::create($request->all());
-                    $user->licenses()->attach($request->cats);
-                } else {
-                    return redirect()->back()->withErrors(['Vous ne pouvez pas créer un utilisateur. Authorisation refusée !']);
-                }
-                return redirect()->route('users.index');*/
     }
 
     /**
@@ -61,9 +48,7 @@ class UserController extends Controller
      */
     public function show(User $user)
     {
-        $this->authorize('update', $user);
-
-        $user->with('licenses')->get();
+/*        $user = User::with('memberships')->get();*/
         return view('users.show', ['user' => $user]);
     }
 
@@ -75,35 +60,23 @@ class UserController extends Controller
     {
         $this->authorize('update', $user);
 
-        $licenses = License::all();
-        return view('users.edit', ['user' => $user, 'licenses' => $licenses]);
+        /*        $licenses = License::all();*/
+        return view('users.edit', ['user' => $user/*, 'licenses' => $licenses*/]);
     }
 
     /**
      * @param UpdateUser $request
      * @param User $user
-     * @param Team $team
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Http\RedirectResponse
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     * @throws \Illuminate\Auth\Access\AuthorizationException
      */
     public function update(UpdateUser $request, User $user)
     {
         $this->authorize('update', $user);
 
         $user->update($request->all());
-        $user->licenses()->sync($request->cats);
+        /*        $user->licenses()->sync($request->cats);*/
         return view('users.show', ['user' => $user]);
-
-        /*
-       * IF TEAMS ARE ENABLED IN JETSTREAM
-       *
-      if ($request->user()->hasTeamPermission($team, 'read')) {
-          $user->update($request->all());
-          $user->licenses()->sync($request->cats);
-      } else {
-          return redirect()->back()->withErrors(['Vous ne pouvez pas éditer un utilisateur. Authorisation refusée !']);
-      }
-      return view('users.show', ['user' => $user]);
-        */
     }
 
     /**

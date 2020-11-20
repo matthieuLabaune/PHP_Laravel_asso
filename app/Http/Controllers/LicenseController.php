@@ -13,7 +13,7 @@ class LicenseController extends Controller
      */
     public function index()
     {
-        $licenses = License::with('users')->get();
+        $licenses = License::with('memberships.user')->get();
         return view('licenses.index', ['licenses' => $licenses]);
     }
 

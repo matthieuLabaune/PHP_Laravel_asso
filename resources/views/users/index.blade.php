@@ -9,7 +9,6 @@
         <div class="max-w-8xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
 
-
                 <div class="m-2">
                     <div class="row">
                         <div class="ml-3 mt-3 mb-3">
@@ -77,7 +76,7 @@
                                                                 {{$user -> name}} {{$user->first_name}}
                                                             </div>
                                                             <div class="text-sm leading-5 text-gray-500">
-                                                                Né(e) le : {{ $user->birthdate}}
+                                                                Né(e) le : {{ $user->birthdate }}
                                                             </div>
                                                         </div>
                                                     </div>
@@ -93,8 +92,10 @@
                                                 <td class="px-6 py-4 whitespace-no-wrap">
                                                     <div class="text-sm leading-5 text-gray-900">{{$user->city}}
                                                         · {{$user->zip_code}}</div>
-                                                    <div class="text-sm leading-5 text-gray-900">{{$user->address_1}}</div>
-                                                    <div class="text-sm leading-5 text-gray-900">{{$user->address_2}}</div>
+                                                    <div
+                                                        class="text-sm leading-5 text-gray-900">{{$user->address_1}}</div>
+                                                    <div
+                                                        class="text-sm leading-5 text-gray-900">{{$user->address_2}}</div>
 
                                                 </td>
                                                 <td class="px-6 py-4 whitespace-no-wrap text-sm leading-5 text-gray-500">
@@ -107,21 +108,15 @@
                                                     @endif
                                                 </td>
                                                 <td class="px-6 py-4 whitespace-no-wrap text-sm leading-5 text-gray-500">
-                                                    @foreach($user->licenses as $license)
-                                                        <li> Type : <a
-                                                                href="{{route('licenses.show', $license->id)}}">
-                                                                {{$license->name}}</a>
-                                                        </li>
-                                                        <li>Prix : {{$license->price}}</li>
-                                                        <li>Créée le : {{$license->pivot->created_at }}</li>
-                                                    @endforeach
+                                                     @foreach($user->memberships as $membership)
+                                                         <p> Type : <a
+                                                                 href="{{route('licenses.show', $membership->id)}}">
+                                                                 {{$membership->license->name}}</a>
+                                                         </p>
+                                                         <p>Prix : {{$membership->license->price}} € · {{$membership->payment_type}}</p>
+                                                     @endforeach
                                                 </td>
                                                 <td class="px-6 py-4 whitespace-no-wrap text-right text-sm leading-5 lg:focus:font-light">
-
-                                                    {{-- <a class="btn bg-green-300 hover:bg-green-200 text-gray-800 font-semibold py-2 px-4 rounded shadow"
-                                                        href="{{route('.create')}}"
-                                                        role="button">Nouveau membre</a>--}}
-
                                                     <div class="inline-flex">
                                                         @can('update', $user)
                                                             <a class="btn bg-blue-200 hover:bg-blue-700 text-gray-800  rounded-full shadow mr-1"
